@@ -58,18 +58,17 @@ public class ProxyServer {
 
             if (connectionToServer) {
                 requestToServer = "GET /" + reqFile + "HTTP/1.1\r\nHost: " + hostName + "\r\n\r\n";
-                response = connectTo(hostName, 80, requestToServer);
             }
             else {
                 connectionToServer = true;
                 hostName = reqFile;
                 requestToServer = "GET / HTTP/1.1\r\nHost: " + reqFile + "\r\n\r\n";
-                response = connectTo(hostName, 80, requestToServer);
             }
 
+            response = connectTo(hostName, 80, requestToServer);
             System.out.println(response + "\n");
-
             out.println(response);
+
             in.close();
             out.close();
         }
